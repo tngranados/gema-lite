@@ -86,6 +86,9 @@
 				this.build();
 				this.buildResponsive();
 			}
+			Container.prototype.setGetOffsets = function(getOffsets) {
+				this.getOffsets = getOffsets;
+			};
 			Container.prototype.append = function (item) {
 				var _this = this;
 				if (Array.isArray(item)) {
@@ -151,8 +154,15 @@
 				} );
 			};
 			Container.prototype.findMinHeightColumn = function () {
+				var _this = this;
 				var allColumns = toArray(this.getColumns());
-				var heights = allColumns.map(function (column) { return column.offsetHeight; });
+				var heights = allColumns.map(function (column, i) {
+					if (_this.getOffsets) {
+						return column.offsetHeight + _this.getOffsets(i);
+					} else {
+						return column.offsetHeight + column.offsetTop;
+					}
+				});
 				var minHeight = Math.min.apply(null, heights);
 				return allColumns[heights.indexOf(minHeight)];
 			};
