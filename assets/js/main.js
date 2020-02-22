@@ -1269,6 +1269,13 @@
 
         if ($('.grid').length && bricklayer === null) {
             bricklayer = new Bricklayer(document.querySelector('.grid'));
+            bricklayer.setGetOffsets(function(i) {
+                if (i === 1) {
+                    return $('.header .site-branding').outerHeight();
+                } else {
+                    return 0;
+                }
+            });
             bricklayer.redraw();
         }
 
