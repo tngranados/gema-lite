@@ -77,8 +77,8 @@ function gema_lite_setup() {
 	 * Enable support for custom logo.
 	 */
 	add_theme_support( 'custom-logo', array(
-		'height'      => 220,
-		'width'       => 710,
+		'height'      => 372,
+		'width'       => 1200,
 		'flex-height' => true,
 		'header-text' => array(
 			'site-title',
@@ -86,7 +86,7 @@ function gema_lite_setup() {
 		)
 	) );
 
-	add_image_size( 'gema-site-logo', 710, 220, false );
+	add_image_size( 'gema-site-logo', 1200, 372, false );
 
 	/**
 	 * Enable support for the Style Manager Customizer section (via Customify).
